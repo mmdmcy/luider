@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+.codex/
+.claude/
+AGENTS.md
+private/
+*.log
+*.zip
+*.xpi
+web-ext-artifacts/
+node_modules/
+.DS_Store

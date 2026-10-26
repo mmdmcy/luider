@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Luider</title>
+<style>
+  :root { color-scheme: light dark; font: 14px/1.4 system-ui, sans-serif; }
+  body { margin: 0; padding: 14px 16px 12px; width: 240px; }
+  h1 { font-size: 15px; margin: 0 0 8px; display: flex; justify-content: space-between; align-items: baseline; }
+  output { font-variant-numeric: tabular-nums; font-size: 20px; }
+  input[type=range] { width: 100%; margin: 6px 0 10px; }
+  .row { display: flex; gap: 6px; }
+  button { flex: 1; padding: 5px 0; border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: 6px; background: transparent; color: inherit; cursor: pointer; }
+  button:hover { background: color-mix(in srgb, currentColor 10%, transparent); }
+  p { margin: 8px 0 0; font-size: 12px; opacity: .75; min-height: 1.2em; }
+</style>
+</head>
+<body>
+  <h1>Luider <output id="value">100%</output></h1>
+  <input id="gain" type="range" min="10" max="600" step="10" value="100" aria-label="Volume">
+  <div class="row">
+    <button data-gain="100">100%</button>
+    <button data-gain="200">200%</button>
+    <button data-gain="300">300%</button>
+    <button data-gain="600">Max</button>
+  </div>
+  <p id="note"></p>
+  <script src="popup.js"></script>
+</body>
+</html>
