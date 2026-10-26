@@ -27,6 +27,9 @@ unpacked", pick this folder.
 
 Firefox: `about:debugging#/runtime/this-firefox`, "Load Temporary Add-on",
 pick `manifest.json`. (A signed build for permanent install is a later step.)
+Firefox grants an extension a site only when you click its icon, so the
+remembered boost comes back by itself only on sites where you chose "Always
+allow" in the extension's menu; elsewhere one click on the icon is enough.
 
 ## Use
 

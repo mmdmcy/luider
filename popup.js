@@ -7,12 +7,23 @@ let tabId = null;
 
 function show(percent) { value.textContent = `${Math.round(percent)}%`; slider.value = String(Math.round(percent)); }
 
+// Firefox grants a site only when you click the icon (activeTab), so the
+// content script is injected on demand; the guard inside it makes a second
+// injection a no-op.
+let injected = false;
+async function inject() {
+  if (injected || tabId == null) return;
+  try { await api.scripting.executeScript({ target: { tabId, allFrames: true }, files: ["content.js"] }); } catch { /* chrome:// and the like */ }
+  injected = true;
+}
+
 async function tell(message) {
   if (tabId == null) return null;
+  await inject();
   try {
     return await api.tabs.sendMessage(tabId, { luider: 1, ...message });
   } catch (e) {
-    note.textContent = "This page cannot be boosted (no content script here). Reload the tab once.";
+    note.textContent = "This page cannot be boosted here (browser pages and some stores are off limits).";
     return null;
   }
 }
